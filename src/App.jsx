@@ -5,11 +5,22 @@ import 'leaflet/dist/leaflet.css';
 
 import { fetchData } from './service';
 
-
 function App() {
   const [data, setData] = useState([]);
   const [latitude, setLatitude] = useState(0);
   const [longitude, setLongitude] = useState(0);
+  const [cordinates, setCordinates] = useState('');
+
+  const timestamp = data?.features?.map((feature) => {
+    return feature.properties.timestamp;
+  });
+
+  const user = data?.features?.map((feature) => {
+    return feature.properties.user;
+  });
+
+  console.log(cordinates);
+  // setCordinates('');
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(async (position) => {
@@ -28,18 +39,20 @@ function App() {
 
   return (
     <div className="App">
-      <div className='Content'>
-      <h1>Location</h1>
-      <input
-        className="input-field"
-        placeholder="Please Enter the Coordinates..."
-      ></input>
-      <div>
-       <h3>Dataset</h3>
+      <div className="Content">
+        <h1>Location</h1>
+        <input
+          className="input-field"
+          onChange = {e => setCordinates(e.target.value)}
+          placeholder="Please Enter the Coordinates..."
+        ></input>
+        <div>
+          <h3>Dataset</h3>
           <p>Latitude: {latitude}N</p>
           <p>Longitude: {longitude}E</p>
-          <p>Timestamp: </p>
-      </div>
+          <p>Timestamp: {timestamp}</p>
+          <p>User: {user}</p>
+        </div>
       </div>
       {latitude > 0 && longitude > 0 && (
         <div className="card">
