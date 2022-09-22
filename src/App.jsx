@@ -36,9 +36,9 @@ function App() {
       ></input>
       <div>
        <h3>Dataset</h3>
-          <p>Latitude:</p>
-          <p>Longitude:</p>
-          <p>Timestamp:</p>
+          <p>Latitude: {latitude}N</p>
+          <p>Longitude: {longitude}E</p>
+          <p>Timestamp: </p>
       </div>
       </div>
       {latitude > 0 && longitude > 0 && (
