@@ -1,8 +1,7 @@
 import osmtogeojson from 'osmtogeojson';
 import axios from 'axios';
 
-export async function fetchData(a, b, c, d) {
-  // console.log(a, b, c, d);
+export async function fetchData(a: number, b: number, c: number, d: number) {
   let response = await axios.get(
     'https://www.openstreetmap.org/api/0.6/map?bbox=' +
       encodeURIComponent(`${a},${b},${c},${d}`)
