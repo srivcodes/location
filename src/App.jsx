@@ -1,7 +1,9 @@
 import React from 'react';
-import Map from '../components/Map';
-import LeftPanel from '../components/LeftPanel';
 import 'leaflet/dist/leaflet.css';
+
+import Map from '@components/Map/Map';
+import LeftPanel from '@components/LeftPanel/LeftPanel';
+
 
 function App() {
   return (

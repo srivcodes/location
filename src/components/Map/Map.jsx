@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { GeoJSON, MapContainer, TileLayer } from 'react-leaflet';
-import { fetchData } from '../src/service';
-import './Map.css';
+
+import { fetchData } from '@src/service';
+import '@components/Map/Map.css';
 
 
 function Map() {

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { fetchData } from '../src/service';
-import './LeftPanel.css';
+
+import { fetchData } from '@src/service';
+import '@components/LeftPanel/LeftPanel.css';
 
 function LeftPanel() {
   const [cordinates, setCordinates] = useState('');
