@@ -1,24 +1,9 @@
-import { FC } from 'react';
+import React from 'react';
 
 import '@components/LeftPanel/LeftPanel.css';
 
-type FeatureType = {
-  properties: {
-    timestamp: number | null;
-    user: string | null;
-  };
-};
-type GeoJsonType = {
-  features: Array<FeatureType>;
-};
-interface ILeftPanelProps {
-  onInputChange: () => void;
-  latitude: number;
-  longitude: number;
-  geoJson: GeoJsonType;
-}
-
-const LeftPanel: FC<ILeftPanelProps> = (props) => {
+function LeftPanel(props) {
+  
   const timestamp = props.geoJson?.features?.map((feature) => {
     return feature.properties.timestamp;
   });
@@ -55,6 +40,6 @@ const LeftPanel: FC<ILeftPanelProps> = (props) => {
       </form>
     </div>
   );
-};
+}
 
 export default LeftPanel;

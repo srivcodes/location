@@ -1,11 +1,11 @@
-import { useState, useEffect, useMemo, SyntheticEvent } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { MapContainer } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 
-import Map from 'src/components/Map/Map';
-import LeftPanel from 'src/components/LeftPanel/LeftPanel';
+import Map from '@components/Map/Map';
+import LeftPanel from '@components/LeftPanel/LeftPanel';
 
-import { fetchData } from 'src/service';
+import { fetchData } from '@src/service';
 
 function App() {
   const [geoJson, setGeoJson] = useState([]);
@@ -29,29 +29,24 @@ function App() {
     }
   }, [latitude, longitude]);
 
-  const onInputChange = (
-    event: SyntheticEvent & { target: HTMLFormElement }
-  ) => {
+  const onInputChange = (event) => {
     event.preventDefault();
     const data = new FormData(event.target);
-    const co = data?.get('input-coordinates')?.split(',');
+    const co = data.get('input-coordinates').split(',');
     setLatitude(co[0]);
     setLongitude(co[1]);
   };
 
   const DisplayMap = () =>
-    useMemo(
-      () => (
-        <MapContainer
-          zoom={20}
-          scrollWheelZoom={false}
-          center={{ lat: latitude, lng: longitude }}
-        >
-          <Map geoJson={geoJson} />
-        </MapContainer>
-      ),
-      []
-    );
+    useMemo(() => (
+      <MapContainer
+        zoom={20}
+        scrollWheelZoom={false}
+        center={{ lat: latitude, lng: longitude }}
+      >
+        <Map geoJson={geoJson} />
+      </MapContainer>
+    ),[]);
 
   return (
     <div className="app">
