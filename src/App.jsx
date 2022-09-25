@@ -14,11 +14,28 @@ function App() {
   const [latitude, setLatitude] = useState(0);
   const [longitude, setLongitude] = useState(0);
 
+  const getLocation = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(setPosition, setError);
+    } else {
+      console.error('Geolocation is not supported by your browser');
+    }
+  };
+
+  const setPosition = (position) => {
+    setLatitude(position.coords.latitude);
+    setLongitude(position.coords.longitude);
+  };
+
+  const setError = (error) => {
+    if (error) {
+      setLatitude(12.9716);
+      setLongitude(77.5946);
+    }
+  };
+
   useEffect(() => {
-    navigator.geolocation.getCurrentPosition(async (position) => {
-      setLatitude(position.coords.latitude);
-      setLongitude(position.coords.longitude);
-    });
+    getLocation();
   }, []);
 
   useEffect(() => {
@@ -38,15 +55,18 @@ function App() {
   };
 
   const DisplayMap = () =>
-    useMemo(() => (
-      <MapContainer
-        zoom={20}
-        scrollWheelZoom={false}
-        center={{ lat: latitude, lng: longitude }}
-      >
-        <Map geoJson={geoJson} />
-      </MapContainer>
-    ),[]);
+    useMemo(
+      () => (
+        <MapContainer
+          zoom={20}
+          scrollWheelZoom={false}
+          center={{ lat: latitude, lng: longitude }}
+        >
+          <Map geoJson={geoJson} />
+        </MapContainer>
+      ),
+      []
+    );
 
   return (
     <div className="app">
