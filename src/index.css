@@ -30,5 +30,11 @@ body {
   align-items: center;
 }
 
+@media (min-width: 320px) and (max-width: 425px) {
+  .content-body{
+    flex-direction: column;
+  }
+}
+
 
 

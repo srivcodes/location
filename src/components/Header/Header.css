@@ -10,4 +10,10 @@
     margin: 0 25px;
     border-radius: 5px;
   }
+
+  @media (min-width: 320px) and (max-width: 375px) {
+    .header{
+      flex-flow: column;
+    }
+  }
   
