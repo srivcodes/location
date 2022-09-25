@@ -14,6 +14,10 @@
 
     `yarn`
 
+- Update the .env file.
+    - remove .example from the last.
+    - replace 'env_key' with the openweathermap API key.
+
 - Run the local server.
 
     `yarn dev`
