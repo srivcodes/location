@@ -10,8 +10,6 @@ function LeftPanel(props) {
   const pressure = props.geoJson?.weather?.main?.pressure;
   const feelsLike = props.geoJson?.weather?.main?.feels_like;
 
-  console.log(props.geoJson?.weather);
-
   return (
     <div className="panel-container">
       <div className="region-information">
@@ -27,18 +25,18 @@ function LeftPanel(props) {
           <i>Example: 12.9716,77.5946</i>
         </p>
         <div className="details">
-        <div className="street-details">
-          <h3>Street Details</h3>
-          <p>Latitude: {props.latitude}N</p>
-          <p>Longitude: {props.longitude}E</p>
-        </div>
-        <div clasName="weather-details">
-          <h3>Weather Details</h3>
-          <p>Temperature: {temperature}°C</p>
-          <p>Humidity: {humidity}</p>
-          <p>Pressure: {pressure}</p>
-          <p>Feels Like: {feelsLike}°C</p>
-        </div>
+          <div className="street-details">
+            <h3>Street Details</h3>
+            <p>Latitude: {props.latitude}N</p>
+            <p>Longitude: {props.longitude}E</p>
+          </div>
+          <div clasName="weather-details">
+            <h3>Weather Details</h3>
+            <p>Temperature: {temperature}°C</p>
+            <p>Humidity: {humidity}</p>
+            <p>Pressure: {pressure}</p>
+            <p>Feels Like: {feelsLike}°C</p>
+          </div>
         </div>
       </div>
     </div>
