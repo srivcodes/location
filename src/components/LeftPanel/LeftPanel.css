@@ -29,3 +29,25 @@ h1 {
   margin-left: 27px;
   margin-bottom: 50px;
 }
+
+@media (min-width: 320px) and (max-width: 769px){
+  .app {
+    /* background-color: red; */
+    display: flex;
+    flex-direction: column;
+  } 
+
+  .input-field {
+    padding: 1em;
+    width: 50%;
+    margin-left: 25px;
+    border-radius: 5px;
+    margin-bottom: 30px;
+  } 
+
+  .content{
+    align-items: center;
+  }
+  
+  }
+  

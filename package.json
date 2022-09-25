@@ -1,16 +1,15 @@
 {
   "name": "location",
   "private": true,
-  "version": "0.0.0",
-  "type": "module",
+  "version": "1.0.0",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
   },
   "dependencies": {
-    "@vitejs/plugin-react": "^2.1.0",
     "@react-leaflet/core": "^2.0.1",
+    "@vitejs/plugin-react": "^2.1.0",
     "axios": "^0.27.2",
     "leaflet": "^1.9.0",
     "osmtogeojson": "^3.0.0-beta.4",

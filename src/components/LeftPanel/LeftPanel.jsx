@@ -1,5 +1,4 @@
 import React from 'react';
-
 import '@components/LeftPanel/LeftPanel.css';
 
 function LeftPanel(props) {
