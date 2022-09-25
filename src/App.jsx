@@ -9,7 +9,7 @@ import Header from '@components/Header/Header';
 import { fetchData } from '@src/service';
 
 function App() {
-  const [geoJson, setGeoJson] = useState([]);
+  const [geoJson, setGeoJson] = useState(false);
   const [initialLatitude, setInitialLatitude] = useState(0);
   const [initialLongitude, setInitialLongitude] = useState(0);
   const [latitude, setLatitude] = useState(0);
@@ -73,14 +73,18 @@ function App() {
   return (
     <div className="container">
       <Header onInputChange={onInputChange} />
-      <div className="content-body">
-        <LeftPanel
-          geoJson={geoJson}
-          latitude={latitude}
-          longitude={longitude}
-        />
-        <DisplayMap />
-      </div>
+      {geoJson ? (
+        <div className="content-body">
+          <LeftPanel
+            geoJson={geoJson}
+            latitude={latitude}
+            longitude={longitude}
+          />
+          <DisplayMap />
+        </div>
+      ) : (
+        <h3>Fetching details...</h3>
+      )}
     </div>
   );
 }
