@@ -1,6 +1,18 @@
 import React from 'react';
 import { GeoJSON, Marker, TileLayer } from 'react-leaflet';
 import { useLeafletContext } from '@react-leaflet/core';
+import L from 'leaflet';
+import icon from 'leaflet/dist/images/marker-icon.png';
+import iconShadow from 'leaflet/dist/images/marker-shadow.png';
+
+// workaround for leaflet icon since react-leaflet removes it on production from the path
+
+let DefaultIcon = L.icon({
+  iconUrl: icon,
+  shadowUrl: iconShadow
+});
+
+L.Marker.prototype.options.icon = DefaultIcon;
 
 import '@components/Map/Map.css';
 
