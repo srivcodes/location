@@ -1,53 +1,46 @@
-.app {
+.panel-container {
   display: flex;
   flex-direction: row;
 }
 
-.content {
+.region-information {
   display: flex;
   flex-direction: column;
-  margin-left: 20px;
 }
 
-.input-field {
-  padding: 1em;
-  width: 100%;
-  margin-left: 25px;
-  border-radius: 5px;
-  margin-bottom: 30px;
+.title{
+  display: flex;
+  align-items: center;
 }
 
-h3,
-p {
-  margin-left: 27px;
-}
-
-h1 {
-  font-size: 3.2em;
+.title > h1 {
+  font-size: 48px;
   line-height: 1.1;
   color: #bb86fc;
-  margin-left: 27px;
-  margin-bottom: 50px;
 }
 
-@media (min-width: 320px) and (max-width: 769px){
-  .app {
+.details{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+
+@media (min-width: 320px) and (max-width: 769px) {
+  .panel-container {
     /* background-color: red; */
     display: flex;
     flex-direction: column;
-  } 
+  }
 
   .input-field {
     padding: 1em;
     width: 50%;
-    margin-left: 25px;
+    margin-left: 43px;
     border-radius: 5px;
     margin-bottom: 30px;
-  } 
+  }
 
-  .content{
+  .content {
     align-items: center;
   }
-  
-  }
-  
+}

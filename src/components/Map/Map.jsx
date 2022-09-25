@@ -7,6 +7,7 @@ import '@components/Map/Map.css';
 function Map(props) {
   const context = useLeafletContext();
   const { lat, lng } = context.map.getCenter();
+  const geoJson = context.map.options.geoJson;
 
   return (
     lat > 0 &&
@@ -17,7 +18,7 @@ function Map(props) {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         <Marker position={[lat, lng]} />
-        <GeoJSON key={JSON.stringify(props.geoJson)} data={props.geoJson} />
+        <GeoJSON key={JSON.stringify(geoJson)} data={geoJson} />
       </div>
     )
   );

@@ -2,13 +2,7 @@
   width: 800px;
   height: 75vh;
   border-radius: 5px;
-  margin-left: 240px;
-  margin-top: 40px;
-}
-
-.app {
-  display: flex;
-  flex-direction: row;
+  margin: 90px 30px 0px 240px; 
 }
 
 .card {

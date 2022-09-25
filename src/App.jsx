@@ -4,6 +4,7 @@ import 'leaflet/dist/leaflet.css';
 
 import Map from '@components/Map/Map';
 import LeftPanel from '@components/LeftPanel/LeftPanel';
+import Header from '@components/Header/Header';
 
 import { fetchData } from '@src/service';
 
@@ -16,21 +17,21 @@ function App() {
 
   const getLocation = () => {
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(setPosition, setError);
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          setLatitude(position.coords.latitude);
+          setLongitude(position.coords.longitude);
+        },
+        (error) => {
+          if (error) {
+            // these are fallback coordinates incase of the location being blocked
+            setLatitude(12.9716);
+            setLongitude(77.5946);
+          }
+        }
+      );
     } else {
       console.error('Geolocation is not supported by your browser');
-    }
-  };
-
-  const setPosition = (position) => {
-    setLatitude(position.coords.latitude);
-    setLongitude(position.coords.longitude);
-  };
-
-  const setError = (error) => {
-    if (error) {
-      setLatitude(12.9716);
-      setLongitude(77.5946);
     }
   };
 
@@ -61,22 +62,25 @@ function App() {
           zoom={20}
           scrollWheelZoom={false}
           center={{ lat: latitude, lng: longitude }}
+          geoJson={geoJson}
         >
-          <Map geoJson={geoJson} />
+          <Map />
         </MapContainer>
       ),
       []
     );
 
   return (
-    <div className="app">
-      <LeftPanel
-        geoJson={geoJson}
-        onInputChange={onInputChange}
-        latitude={latitude}
-        longitude={longitude}
-      />
-      <DisplayMap />
+    <div className="container">
+      <Header onInputChange={onInputChange} />
+      <div className="content-body">
+        <LeftPanel
+          geoJson={geoJson}
+          latitude={latitude}
+          longitude={longitude}
+        />
+        <DisplayMap />
+      </div>
     </div>
   );
 }
